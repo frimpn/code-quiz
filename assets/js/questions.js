@@ -1,6 +1,6 @@
 let questionBox = document.querySelector('#questions')
 let questionTitle = document.querySelector('#question-title')
-let choices = document.querySelector('choices')
+let choicesEl = document.querySelector('#choices')
 let startScreen = document.querySelector('#start-screen')
 
 let start = document.querySelector('#start')
@@ -25,13 +25,22 @@ function renderQuestion(){
            answer: 2 
         }
 
-    
-
     ]
 
     questionTitle.innerHTML = questions[currentQuestion].question
     
-        
+        for(let i = 0; i < questions[currentQuestion].choices.length; i++){
+            let pick = questions[currentQuestion].choices[i]
+
+            let li = document.createElement('li')
+
+            li.innerText = pick
+
+            console.log(li)
+
+            choicesEl.appendChild(li)
+
     
+        }
 
 }
