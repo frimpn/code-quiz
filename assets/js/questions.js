@@ -27,6 +27,8 @@ function renderQuestion(){
 
     ]
 
+    let rightAnswer = questions[currentQuestion].answer
+
     questionTitle.innerHTML = questions[currentQuestion].question
     
         for(let i = 0; i < questions[currentQuestion].choices.length; i++){
@@ -36,11 +38,41 @@ function renderQuestion(){
 
             li.innerText = pick
 
-            console.log(li)
+            li.classList.add('choose')
+
 
             choicesEl.appendChild(li)
 
     
         }
 
+        let checks = document.querySelectorAll('.choose')
+        checks.forEach(check =>{
+        
+            check.addEventListener('click', function(){
+                let answer = check.innerText
+
+               checkAnswer(answer,rightAnswer)
+            })
+        })
+
+
+    
+
+}
+
+
+
+function checkAnswer(answer,correct){
+    
+    console.log(answer)
+    console.log()
+
+    if(answer == correct){
+    console.log('right')
+    }else{
+        console.log('wrong')
+    }
+
+    
 }
