@@ -3,6 +3,7 @@ let questionTitle = document.querySelector('#question-title')
 let choicesEl = document.querySelector('#choices')
 let startScreen = document.querySelector('#start-screen')
 let showResult = document.querySelector('#show-result')
+let endScreen = document.getElementById('end-screen')
 
 let start = document.querySelector('#start')
 let currentQuestion = 0
@@ -93,6 +94,7 @@ function renderQuestion(){
 if(currentQuestion === questions.length){
     currentQuestion--
     questionBox.style.display = 'none'
+    showEnd()
 }
 
 
@@ -146,6 +148,7 @@ function checkAnswer(answer,correct){
 
     if(answer == correct){
         score++
+        localStorage.setItem('score',score)
         currentQuestion++
         showResult.innerText = 'correct!'
         showResult.setAttribute('style','margin-top: 60px; color:green; font-size:50px')
@@ -165,7 +168,7 @@ function checkAnswer(answer,correct){
     }
 
 
-console.log(currentQuestion)
+console.log(score)
 }
 
 
@@ -177,3 +180,12 @@ function removeChoices(){
 
     
 }
+
+function showEnd(){
+
+    endScreen.classList.remove('hide')
+    let finalScore = document.querySelector('#final-score')
+     finalScore.textContent = localStorage.getItem('score')
+}
+
+
