@@ -6,7 +6,7 @@ let showResult = document.querySelector('#show-result')
 let endScreen = document.getElementById('end-screen')
  let button = document.getElementById('submit')
  let timer = document.getElementById('time')
-     
+ //let initials = document.querySelector('#initials').value.trim()
 
 let start = document.querySelector('#start')
 let currentQuestion = 0
@@ -170,7 +170,7 @@ function checkAnswer(answer,correct){
         showResult.setAttribute('style','margin-top: 60px; color:red; font-size:50px')
         removeChoices()
         renderQuestion()
-        upSpeed+=2
+        upSpeed = 10
     }
 
 
@@ -203,9 +203,32 @@ function begin(event){
 
     event.preventDefault()
 
-let initials = document.querySelector('#initials').value
-localStorage.setItem('initials',initials)
-//console.log(localStorage.getItem(initials))
+    
+    let initials = document.querySelector('#initials').value.trim()
+
+
+
+
+ localStorage.setItem('initials',initials)
+    
+    
+
+    
+
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+
+
+
+
 
 
 }
@@ -228,3 +251,4 @@ function startTimer(){
 
     console.log(upSpeed)
 } 
+
