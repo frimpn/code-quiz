@@ -4,10 +4,15 @@ let choicesEl = document.querySelector('#choices')
 let startScreen = document.querySelector('#start-screen')
 let showResult = document.querySelector('#show-result')
 let endScreen = document.getElementById('end-screen')
+ let button = document.getElementById('submit')
+ let timer = document.getElementById('time')
+     
 
 let start = document.querySelector('#start')
 let currentQuestion = 0
 let score = 0
+let count = 60
+let upSpeed = 1
 
 start.addEventListener('click', startUp)
 
@@ -15,6 +20,7 @@ function startUp(){
   startScreen.innerHTML = ""
     questionBox.style.display ="block"
     renderQuestion()
+    startTimer()
 }
 
 function renderQuestion(){
@@ -164,11 +170,11 @@ function checkAnswer(answer,correct){
         showResult.setAttribute('style','margin-top: 60px; color:red; font-size:50px')
         removeChoices()
         renderQuestion()
-        
+        upSpeed+=2
     }
 
 
-console.log(score)
+
 }
 
 
@@ -186,6 +192,39 @@ function showEnd(){
     endScreen.classList.remove('hide')
     let finalScore = document.querySelector('#final-score')
      finalScore.textContent = localStorage.getItem('score')
+     
+     
 }
 
+button.addEventListener('click', begin)
 
+
+function begin(event){
+
+    event.preventDefault()
+
+let initials = document.querySelector('#initials').value
+localStorage.setItem('initials',initials)
+//console.log(localStorage.getItem(initials))
+
+
+}
+
+function startTimer(){
+    timer.innerText = count
+
+    let clock = setInterval(()=>{
+        count = count - upSpeed
+        timer.innerText =count
+
+        if(count <= 0){
+         timer.innerText = 0
+            clearInterval(clock)
+            questionBox.style.display = 'none'
+            showEnd()
+        }
+
+    },1000)
+
+    console.log(upSpeed)
+} 
