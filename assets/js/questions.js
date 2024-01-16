@@ -211,25 +211,6 @@ function begin(event){
 
  localStorage.setItem('initials',initials)
     
-    
-
-    
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-
-
-
-
-
 
 }
 
