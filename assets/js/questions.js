@@ -2,6 +2,7 @@ let questionBox = document.querySelector('#questions')
 let questionTitle = document.querySelector('#question-title')
 let choicesEl = document.querySelector('#choices')
 let startScreen = document.querySelector('#start-screen')
+let showResult = document.querySelector('#show-result')
 
 let start = document.querySelector('#start')
 let currentQuestion = 0
@@ -146,6 +147,8 @@ function checkAnswer(answer,correct){
     if(answer == correct){
         score++
         currentQuestion++
+        showResult.innerText = 'correct!'
+        showResult.setAttribute('style','margin-top: 60px; color:green; font-size:50px')
         removeChoices()
         renderQuestion()
     
@@ -153,7 +156,11 @@ function checkAnswer(answer,correct){
 
     
     }else{
-        console.log('wrong')
+        currentQuestion++
+        showResult.innerText = 'Wrong!'
+        showResult.setAttribute('style','margin-top: 60px; color:red; font-size:50px')
+        removeChoices()
+        renderQuestion()
         
     }
 
